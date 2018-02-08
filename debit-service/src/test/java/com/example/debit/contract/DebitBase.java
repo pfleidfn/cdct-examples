@@ -12,4 +12,10 @@ public class DebitBase extends MockMvcBase {
     @MockBean
     private DebitService debitService;
 
+    @Before
+    public void configureDebitServiceMock() {
+        when(debitService.customerIsOnBlacklist("max.mustermann")).thenReturn(true);
+        when(debitService.ccNumberInvalid("123456")).thenReturn(true);
+    }
+
 }
